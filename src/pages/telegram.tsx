@@ -1,6 +1,7 @@
 // src/pages/telegram.js
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import useAxios from "../hooks/useAxios";
 
 declare global {
   interface Window {
@@ -11,7 +12,24 @@ declare global {
 const TelegramPage = () => {
   const [authData, setAuthData] = useState(null);
   const [initData, setInitData] = useState(null);
+  const [data, setData] = useState(null);
   const router = useRouter();
+
+  const {
+    data: tokenData,
+    error: tokenError,
+    loading: tokenLoading,
+    fetchData: tokenFetchData,
+  } = useAxios({
+    url: `/api/verifyTelegramAuth`,
+    method: "POST",
+  });
+
+  useEffect(() => {
+    if (!tokenLoading && tokenData) {
+      setData(JSON.stringify(tokenData));
+    }
+  }, [tokenLoading]);
 
   const fetchData = () => {
     // 自动获取token认证信息
@@ -27,22 +45,24 @@ const TelegramPage = () => {
     });
     setInitData(initData);
 
+    tokenFetchData(initData);
+
     // 将initData发送到您的后端进行验证和处理
-    fetch("/api/verifyTelegramAuth", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ initData }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          console.log("验证成功");
-        } else {
-          console.log("验证失败");
-        }
-      });
+    // fetch("/api/verifyTelegramAuth", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ initData }),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     if (data.success) {
+    //       console.log("验证成功");
+    //     } else {
+    //       console.log("验证失败");
+    //     }
+    //   });
   };
 
   useEffect(() => {
@@ -79,7 +99,10 @@ const TelegramPage = () => {
           <p>Last Name: {authData.user.last_name}</p>
           <p>Username: {authData.user.username}</p>
           <div>{JSON.stringify(authData)}</div>
+          <div>-------------------------------------</div>
           <div>{JSON.stringify(initData)}</div>
+          <div>-------------------------------------</div>
+          <div>{data}</div>
         </div>
       )}
     </div>
