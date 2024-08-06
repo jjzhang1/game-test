@@ -10,6 +10,7 @@ export default function handler(req, res) {
 
   const { initData } = req.body;
   const initDataUnsafe = JSON.parse(initData);
+  console.log("+++++++++++++", initDataUnsafe);
   const checkString = initDataUnsafe
     .split("&")
     .filter((x) => !x.startsWith("hash"))
@@ -22,7 +23,6 @@ export default function handler(req, res) {
     .digest("hex");
 
   console.log("*************", hash);
-  console.log("+++++++++++++", initDataUnsafe);
 
   if (hash === initDataUnsafe?.hash) {
     // 验证成功
