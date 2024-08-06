@@ -31,14 +31,16 @@ export default function handler(req, res) {
 
   // const initDataUnsafe = initData;
 
+  // auth_date=<auth_date>\nfirst_name=<first_name>\nid=<id>\nusername=<username>
+
   const dataCheckString = [
     `auth_date=${auth_date}`,
     `first_name=${first_name}`,
-    `id=${id}`,
     `last_name=${last_name}`,
+    `id=${id}`,
     `username=${username}`,
   ]
-    // .sort()
+    .sort()
     .join("\n");
 
   console.log("+++++++++++++", dataCheckString);
