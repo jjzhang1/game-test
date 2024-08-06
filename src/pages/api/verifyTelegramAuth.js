@@ -11,11 +11,25 @@ export default function handler(req, res) {
 
   const { initData, initDataUnsafe } = req.body;
 
-  const { auth_date, first_name, id, last_name, username, hash } =
-    initDataUnsafe;
+  // {
+  //   user: {
+  //     id: 2075161842,
+  //     first_name: 'Eden',
+  //     last_name: 'Zhang',
+  //     username: 'edenjjzhang',
+  //     language_code: 'zh-hans',
+  //     allows_write_to_pm: true
+  //   },
+  //   chat_instance: '-5145982372181983218',
+  //   chat_type: 'private',
+  //   auth_date: '1722936526',
+  //   hash: '32d7bd14afd4b395d3bc9730c73ab9db44118bf89803050d252ba612d570eed5'
+  // }
+
+  const { auth_date, user, hash } = initDataUnsafe;
+  const { first_name, id, last_name, username } = user;
 
   // const initDataUnsafe = initData;
-  console.log("+++++++++++++", initData);
 
   const dataCheckString = [
     `auth_date=${auth_date}`,
@@ -26,6 +40,8 @@ export default function handler(req, res) {
   ]
     .sort()
     .join("\n");
+
+  console.log("+++++++++++++", dataCheckString);
 
   // 计算密钥
   const secret = crypto.createHash("sha256").update(secret).digest();
