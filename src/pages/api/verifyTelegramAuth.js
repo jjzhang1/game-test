@@ -23,6 +23,14 @@ export default function handler(req, res) {
     .digest("hex");
 
   console.log("*************", hash, initDataUnsafe.hash);
+  console.log("##############", checkString);
+
+  // const validateHash = crypto
+  //   .createHmac("sha256", key)
+  //   .update(
+  //     "auth_date=1646xxx\nfirst_name=namexxx\nid=1231xxxx\nAusername=alexLxxx"
+  //   )
+  //   .digest("hex");
 
   if (hash === initDataUnsafe?.hash) {
     // 验证成功
