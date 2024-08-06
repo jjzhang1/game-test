@@ -53,7 +53,7 @@ const TelegramPage = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ initData }),
+      body: JSON.stringify({ initData, initDataUnsafe }),
     })
       .then((response) => response.json())
       .then((data) => {

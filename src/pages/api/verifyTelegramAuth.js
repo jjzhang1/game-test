@@ -8,10 +8,10 @@ export default function handler(req, res) {
   //   return res.status(405).end(); // 方法不允许
   // }
 
-  const { initData } = req.body;
-  const initDataUnsafe = initData;
-  console.log("+++++++++++++", initDataUnsafe);
-  const checkString = initDataUnsafe
+  const { initData, initDataUnsafe } = req.body;
+  // const initDataUnsafe = initData;
+  console.log("+++++++++++++", initData);
+  const checkString = initData
     .split("&")
     .filter((x) => !x.startsWith("hash"))
     .sort()
@@ -26,9 +26,9 @@ export default function handler(req, res) {
 
   if (hash === initDataUnsafe?.hash) {
     // 验证成功
-    return res.status(200).json({ success: true, data: { initDataUnsafe } });
+    return res.status(200).json({ success: true, data: { initData } });
   } else {
     // 验证失败
-    return res.status(403).json({ success: false, data: { initDataUnsafe } });
+    return res.status(403).json({ success: false, data: { initData } });
   }
 }
