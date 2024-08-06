@@ -14,7 +14,7 @@ export default function handler(req, res) {
   const checkString = initData
     .split("&")
     .filter((x) => !x.startsWith("hash"))
-    .sort()
+    // .sort()
     .join("\n");
   const secretKey = crypto.createHash("sha256").update(secret).digest();
   const hash = crypto
