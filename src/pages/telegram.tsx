@@ -76,6 +76,7 @@ const TelegramPage = () => {
           <p>First Name: {authData.user.first_name}</p>
           <p>Last Name: {authData.user.last_name}</p>
           <p>Username: {authData.user.username}</p>
+          <div>{JSON.stringify(authData)}</div>
         </div>
       )}
     </div>
