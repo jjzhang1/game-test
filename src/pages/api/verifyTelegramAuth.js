@@ -22,7 +22,7 @@ export default function handler(req, res) {
     .digest("hex");
 
   console.log("*************", hash);
-  console.log("+++++++++++++", req?.body);
+  console.log("+++++++++++++", initDataUnsafe);
 
   if (hash === initDataUnsafe?.hash) {
     // 验证成功
