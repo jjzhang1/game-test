@@ -4,9 +4,9 @@ import crypto from "crypto";
 const secret = "7033339300:AAEEt_MJUxuU9yMFeoTz6R7GwA27TfmfQWE";
 
 export default function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).end(); // 方法不允许
-  }
+  // if (req.method !== "POST") {
+  //   return res.status(405).end(); // 方法不允许
+  // }
 
   const { initData } = req.body;
   const checkString = initData

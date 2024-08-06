@@ -28,21 +28,21 @@ const TelegramPage = () => {
     setInitData(initData);
 
     // 将initData发送到您的后端进行验证和处理
-    // fetch("/api/verifyTelegramAuth", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ initData }),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     if (data.success) {
-    //       console.log("验证成功");
-    //     } else {
-    //       console.log("验证失败");
-    //     }
-    //   });
+    fetch("/api/verifyTelegramAuth", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ initData }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          console.log("验证成功");
+        } else {
+          console.log("验证失败");
+        }
+      });
   };
 
   useEffect(() => {
