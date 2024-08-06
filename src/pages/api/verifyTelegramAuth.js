@@ -9,7 +9,7 @@ export default function handler(req, res) {
   // }
 
   const { initData } = req.body;
-  const initDataUnsafe = JSON.parse(initData);
+  const initDataUnsafe = initData;
   console.log("+++++++++++++", initDataUnsafe);
   const checkString = initDataUnsafe
     .split("&")
