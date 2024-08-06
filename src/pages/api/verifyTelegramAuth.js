@@ -11,7 +11,7 @@ export default function handler(req, res) {
 
   const { initData, initDataUnsafe } = req.body;
   // const initDataUnsafe = initData;
-  console.log("+++++++++++++", initData);
+  console.log("+++++++++++++", JSON.parse(initData));
   // const checkString = initData
   //   .split("&")
   //   .filter((x) => !x.startsWith("hash"))
