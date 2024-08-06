@@ -22,7 +22,7 @@ const webhookHandler = async (req, res) => {
 
   if (message && message.message) {
     const chatId = message.message.chat.id;
-    const text = "Hello, World!";
+    const text = "Hello, World11111!";
 
     await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: "POST",
