@@ -38,7 +38,7 @@ export default function handler(req, res) {
     `last_name=${last_name}`,
     `username=${username}`,
   ]
-    .sort()
+    // .sort()
     .join("\n");
 
   console.log("+++++++++++++", dataCheckString);
@@ -61,6 +61,6 @@ export default function handler(req, res) {
     return res.status(200).json({ success: true, data: { initData } });
   } else {
     // 验证失败
-    return res.status(403).json({ success: false, data: { initData } });
+    return res.status(200).json({ success: false, data: { initData } });
   }
 }
