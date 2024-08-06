@@ -46,18 +46,18 @@ module.exports = {
       },
     ];
   },
-  // async headers() {
-  //   return [
-  //     {
-  //       source: "/(.*)",
-  //       headers: [
-  //         {
-  //           key: "Content-Security-Policy",
-  //           value:
-  //             "default-src 'self'; frame-src 'self'; script-src 'self' https://telegram.org; connect-src 'self' https://api.telegram.org",
-  //         },
-  //       ],
-  //     },
-  //   ];
-  // },
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value:
+              "default-src 'self'; frame-src 'self'; script-src 'self' https://telegram.org; connect-src 'self' https://api.telegram.org",
+          },
+        ],
+      },
+    ];
+  },
 };

@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "@/styles/Home.module.css";
 import Head from "next/head";
-import Script from "next/script";
+
+declare global {
+  interface Window {
+    Telegram: any;
+  }
+}
 export default function Main() {
   const [authData, setAuthData] = useState(null);
   const iframeRef = useRef(null);
@@ -18,13 +23,6 @@ export default function Main() {
       authDate: initDataUnsafe.auth_date,
       hash: initDataUnsafe.hash,
     });
-
-    if (iframeRef.current) {
-      iframeRef.current.contentWindow.postMessage(
-        initDataUnsafe,
-        window.location.origin
-      );
-    }
 
     // 将initData发送到您的后端进行验证和处理
     fetch("/api/verifyTelegramAuth", {
