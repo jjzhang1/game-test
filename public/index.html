@@ -20,7 +20,12 @@
       <div id="authContent"></div>
     </div>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width="1080" height="1920"></canvas>
+      <canvas
+        id="unity-canvas"
+        width="375"
+        height="1920"
+        style="margin-top: 50px"
+      ></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -95,7 +100,7 @@
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-        canvas.style.width = "750px";
+        canvas.style.width = "375px";
         canvas.style.height = "1920px";
       }
 
@@ -159,6 +164,7 @@
         oBtn.onclick = () => {
           fetchData();
         };
+        fetchData();
       };
     </script>
   </body>
