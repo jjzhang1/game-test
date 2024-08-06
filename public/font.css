@@ -1,0 +1,29 @@
+
+ @font-face {
+  font-family: 'PowerGrotesk';
+  src: url('../fonts/PowerGroteskTrial-Black.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+ }
+
+ @font-face {
+  font-family: 'PowerGrotesk';
+  src: url('../fonts/PowerGroteskTrial-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+ }
+
+
+ @font-face {
+  font-family: 'PowerGrotesk';
+  src: url('../fonts/PowerGroteskTrial-Medium.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+ }
+
+ @font-face {
+  font-family: 'PowerGrotesk';
+  src: url('../fonts/PowerGroteskTrial-Regular.otf') format('opentype');
+  font-weight: lighter;
+  font-style: normal;
+ }
