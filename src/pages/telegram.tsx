@@ -45,7 +45,7 @@ const TelegramPage = () => {
     });
     setInitData(initData);
 
-    tokenFetchData(initData);
+    tokenFetchData(JSON.stringify(initData));
 
     // 将initData发送到您的后端进行验证和处理
     // fetch("/api/verifyTelegramAuth", {
