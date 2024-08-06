@@ -16,6 +16,7 @@ export default function Main() {
     const tg = window.Telegram.WebApp;
     const initData = tg.initData || "";
     const initDataUnsafe = tg.initDataUnsafe || {};
+    debugger;
 
     setAuthData({
       queryId: initDataUnsafe.query_id,
@@ -34,6 +35,7 @@ export default function Main() {
     })
       .then((response) => response.json())
       .then((data) => {
+        debugger;
         if (data.success) {
           console.log("验证成功");
         } else {
