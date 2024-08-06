@@ -25,9 +25,13 @@ export default function handler(req, res) {
 
   if (hash === req?.body?.initDataUnsafe?.hash) {
     // 验证成功
-    return res.status(200).json({ success: true });
+    return res
+      .status(200)
+      .json({ success: true, data: { initData, initDataUnsafe } });
   } else {
     // 验证失败
-    return res.status(403).json({ success: false });
+    return res
+      .status(403)
+      .json({ success: false, data: { initData, initDataUnsafe } });
   }
 }
