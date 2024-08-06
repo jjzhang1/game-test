@@ -1,63 +1,26 @@
-// src/pages/telegram.js
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-
-declare global {
-  interface Window {
-    Telegram: any;
-  }
-}
-
-const TelegramPage = () => {
-  const [authData, setAuthData] = useState(null);
-  const router = useRouter();
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.Telegram) {
-      // 自动获取token认证信息
-      const tg = window.Telegram.WebApp;
-      const initData = tg.initData || "";
-      const initDataUnsafe = tg.initDataUnsafe || {};
-
-      setAuthData({
-        queryId: initDataUnsafe.query_id,
-        user: initDataUnsafe.user,
-        authDate: initDataUnsafe.auth_date,
-        hash: initDataUnsafe.hash,
-      });
-
-      // 将initData发送到您的后端进行验证和处理
-      fetch("/api/verifyTelegramAuth", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ initData }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success) {
-            console.log("验证成功");
-          } else {
-            console.log("验证失败");
-          }
-        });
-    }
-  }, [router]);
-
+import React, { useState, useEffect } from "react";
+import styles from "@/styles/Home.module.css";
+import Head from "next/head";
+import Spline from "@splinetool/react-spline";
+export default function Main() {
   return (
-    <div>
-      <h1>Telegram Web App</h1>
-      {authData && (
-        <div>
-          <p>User ID: {authData.user.id}</p>
-          <p>First Name: {authData.user.first_name}</p>
-          <p>Last Name: {authData.user.last_name}</p>
-          <p>Username: {authData.user.username}</p>
-        </div>
-      )}
-    </div>
+    <>
+      <Head>
+        <title>Balance</title>
+      </Head>
+      <div style={{ width: "100%", height: "100vh", margin: 0, padding: 0 }}>
+        <iframe
+          src="/index.html"
+          style={{
+            width: "100%",
+            height: "100%",
+            border: "none",
+            margin: 0,
+            padding: 0,
+            display: "block",
+          }}
+        />
+      </div>
+    </>
   );
-};
-
-export default TelegramPage;
+}
