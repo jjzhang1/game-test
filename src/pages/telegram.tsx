@@ -10,6 +10,7 @@ declare global {
 
 const TelegramPage = () => {
   const [authData, setAuthData] = useState(null);
+  const [initData, setInitData] = useState(null);
   const router = useRouter();
 
   const fetchData = () => {
@@ -24,23 +25,24 @@ const TelegramPage = () => {
       authDate: initDataUnsafe.auth_date,
       hash: initDataUnsafe.hash,
     });
+    setInitData(initData);
 
     // 将initData发送到您的后端进行验证和处理
-    fetch("/api/verifyTelegramAuth", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ initData }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          console.log("验证成功");
-        } else {
-          console.log("验证失败");
-        }
-      });
+    // fetch("/api/verifyTelegramAuth", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ initData }),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     if (data.success) {
+    //       console.log("验证成功");
+    //     } else {
+    //       console.log("验证失败");
+    //     }
+    //   });
   };
 
   useEffect(() => {
@@ -77,6 +79,7 @@ const TelegramPage = () => {
           <p>Last Name: {authData.user.last_name}</p>
           <p>Username: {authData.user.username}</p>
           <div>{JSON.stringify(authData)}</div>
+          <div>{JSON.stringify(initData)}</div>
         </div>
       )}
     </div>
