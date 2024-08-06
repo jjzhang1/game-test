@@ -2,7 +2,7 @@
 import crypto from "crypto";
 import { validate } from "@telegram-apps/init-data-node";
 
-const secret = "7033339300:AAEEt_MJUxuU9yMFeoTz6R7GwA27TfmfQWE";
+const botToken = "7033339300:AAEEt_MJUxuU9yMFeoTz6R7GwA27TfmfQWE";
 
 export default function handler(req, res) {
   // if (req.method !== "POST") {
@@ -44,7 +44,7 @@ export default function handler(req, res) {
   console.log("+++++++++++++", dataCheckString);
 
   // 计算密钥
-  const secret = crypto.createHash("sha256").update(secret).digest();
+  const secret = crypto.createHash("sha256").update(botToken).digest();
 
   // 计算哈希值
   const hmac = crypto
