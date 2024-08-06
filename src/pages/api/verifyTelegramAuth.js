@@ -20,7 +20,10 @@ export default function handler(req, res) {
     .update(checkString)
     .digest("hex");
 
-  if (hash === req.body.initDataUnsafe.hash) {
+  console.log("*************", hash);
+  console.log("+++++++++++++", req?.body);
+
+  if (hash === req?.body?.initDataUnsafe?.hash) {
     // 验证成功
     return res.status(200).json({ success: true });
   } else {

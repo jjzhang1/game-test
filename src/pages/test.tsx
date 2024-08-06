@@ -16,7 +16,6 @@ export default function Main() {
     const tg = window.Telegram.WebApp;
     const initData = tg.initData || "";
     const initDataUnsafe = tg.initDataUnsafe || {};
-    debugger;
 
     setAuthData({
       queryId: initDataUnsafe.query_id,
@@ -31,7 +30,7 @@ export default function Main() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ initData }),
+      body: JSON.stringify({ initData, initDataUnsafe }),
     })
       .then((response) => response.json())
       .then((data) => {
