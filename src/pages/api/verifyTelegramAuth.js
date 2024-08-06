@@ -9,7 +9,8 @@ export default function handler(req, res) {
   // }
 
   const { initData } = req.body;
-  const checkString = initData
+  const initDataUnsafe = JSON.parse(initData);
+  const checkString = initDataUnsafe
     .split("&")
     .filter((x) => !x.startsWith("hash"))
     .sort()
@@ -23,15 +24,11 @@ export default function handler(req, res) {
   console.log("*************", hash);
   console.log("+++++++++++++", req?.body);
 
-  if (hash === req?.body?.initDataUnsafe?.hash) {
+  if (hash === initDataUnsafe?.hash) {
     // 验证成功
-    return res
-      .status(200)
-      .json({ success: true, data: { initData, initDataUnsafe } });
+    return res.status(200).json({ success: true, data: { initDataUnsafe } });
   } else {
     // 验证失败
-    return res
-      .status(403)
-      .json({ success: false, data: { initData, initDataUnsafe } });
+    return res.status(403).json({ success: false, data: { initDataUnsafe } });
   }
 }
