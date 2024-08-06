@@ -3,6 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; connect-src 'self'; img-src 'self' data:;"
+    /> -->
     <title>Unity WebGL Player | TestProject</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico" />
     <link rel="stylesheet" href="TemplateData/style.css" />
@@ -22,6 +26,12 @@
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">TestProject</div>
+      </div>
+      <div>
+        <div>
+          <button id="btnAuth">授权用户信息</button>
+        </div>
+        <div id="authContent"></div>
       </div>
     </div>
     <script>
@@ -117,6 +127,39 @@
       } else {
         console.error("Telegram WebApp not available");
       }
+    </script>
+    <script>
+      window.onload = () => {
+        const fetchData = () => {
+          // 自动获取token认证信息
+          const tg = window.Telegram.WebApp;
+          const initData = tg.initData || "";
+          const initDataUnsafe = tg.initDataUnsafe || {};
+
+          // 将initData发送到您的后端进行验证和处理
+          fetch("/api/verifyTelegramAuth", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ initData }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                oContent.innerHTML = JSON.stringify(data);
+                console.log("验证成功");
+              } else {
+                console.log("验证失败");
+              }
+            });
+        };
+        const oBtn = document.getElementById("btnAuth");
+        const oContent = document.getElementById("authContent");
+        oBtn.onclick = () => {
+          fetchData();
+        };
+      };
     </script>
   </body>
 </html>
