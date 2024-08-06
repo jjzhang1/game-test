@@ -10,31 +10,37 @@ export default function handler(req, res) {
   // }
 
   const { initData, initDataUnsafe } = req.body;
+
+  const { auth_date, first_name, id, last_name, username, hash } =
+    initDataUnsafe;
+
   // const initDataUnsafe = initData;
   console.log("+++++++++++++", initData);
-  // const checkString = initData
-  //   .split("&")
-  //   .filter((x) => !x.startsWith("hash"))
-  //   // .sort()
-  //   .join("\n");
-  // const secretKey = crypto.createHash("sha256").update(secret).digest();
-  // const hash = crypto
-  //   .createHmac("sha256", secretKey)
-  //   .update(checkString)
-  //   .digest("hex");
 
-  const hash = validate(initData, secret);
+  const dataCheckString = [
+    `auth_date=${auth_date}`,
+    `first_name=${first_name}`,
+    `id=${id}`,
+    `last_name=${last_name}`,
+    `username=${username}`,
+  ]
+    .sort()
+    .join("\n");
 
-  console.log("*************", hash, initDataUnsafe);
+  // 计算密钥
+  const secret = crypto.createHash("sha256").update(secret).digest();
 
-  // const validateHash = crypto
-  //   .createHmac("sha256", key)
-  //   .update(
-  //     "auth_date=1646xxx\nfirst_name=namexxx\nid=1231xxxx\nAusername=alexLxxx"
-  //   )
-  //   .digest("hex");
+  // 计算哈希值
+  const hmac = crypto
+    .createHmac("sha256", secret)
+    .update(dataCheckString)
+    .digest("hex");
 
-  if (hash === initDataUnsafe?.hash) {
+  // const calHash = validate(initData, secret);
+
+  console.log("*************", hmac, initDataUnsafe);
+
+  if (hmac === hash) {
     // 验证成功
     return res.status(200).json({ success: true, data: { initData } });
   } else {
