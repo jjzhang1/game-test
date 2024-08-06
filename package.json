@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^2.2.3",
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^1.2.5",
+    "@telegram-apps/init-data-node": "^1.0.4",
     "@walletconnect/sign-client": "^2.12.1",
     "@walletconnect/web3wallet": "^1.11.1",
     "@web3modal/standalone": "^2.4.3",

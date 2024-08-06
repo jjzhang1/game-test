@@ -1,5 +1,6 @@
 // src/pages/api/verifyTelegramAuth.js
 import crypto from "crypto";
+import { validate } from "@telegram-apps/init-data-node";
 
 const secret = "7033339300:AAEEt_MJUxuU9yMFeoTz6R7GwA27TfmfQWE";
 
@@ -11,16 +12,18 @@ export default function handler(req, res) {
   const { initData, initDataUnsafe } = req.body;
   // const initDataUnsafe = initData;
   console.log("+++++++++++++", initData);
-  const checkString = initData
-    .split("&")
-    .filter((x) => !x.startsWith("hash"))
-    // .sort()
-    .join("\n");
-  const secretKey = crypto.createHash("sha256").update(secret).digest();
-  const hash = crypto
-    .createHmac("sha256", secretKey)
-    .update(checkString)
-    .digest("hex");
+  // const checkString = initData
+  //   .split("&")
+  //   .filter((x) => !x.startsWith("hash"))
+  //   // .sort()
+  //   .join("\n");
+  // const secretKey = crypto.createHash("sha256").update(secret).digest();
+  // const hash = crypto
+  //   .createHmac("sha256", secretKey)
+  //   .update(checkString)
+  //   .digest("hex");
+
+  const hash = validate(initData, secret);
 
   console.log("*************", hash, initDataUnsafe.hash);
   console.log("##############", checkString);
