@@ -46,7 +46,7 @@ export default function Main() {
     if (typeof window !== "undefined" && window.Telegram) {
       const tg = window.Telegram.WebApp;
       tg.ready();
-      fetchData();
+      // fetchData();
       console.log("Telegram WebApp initialized:", tg);
     } else {
       console.error("Telegram WebApp not available");
@@ -59,7 +59,9 @@ export default function Main() {
         <title>Balance</title>
       </Head>
       <div style={{ width: "100%", height: "100vh", margin: 0, padding: 0 }}>
-        <div id="content"></div>
+        <div id="content">
+          <button onClick={fetchData}>授权用户信息</button>
+        </div>
         <iframe
           src="/index.html"
           ref={iframeRef}
