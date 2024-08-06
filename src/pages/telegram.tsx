@@ -44,18 +44,14 @@ const TelegramPage = () => {
   };
 
   useEffect(() => {
-    // 检查 window 对象是否存在
-    if (typeof window !== "undefined") {
-      // 检查 Telegram Web App 对象是否存在
-      if (window.Telegram) {
-        const tg = window.Telegram.WebApp;
-        tg.ready();
-        console.log("Telegram WebApp initialized:", tg);
-      } else {
-        console.error("Telegram WebApp not available");
-      }
+    if (typeof window !== "undefined" && window.Telegram) {
+      const tg = window.Telegram.WebApp;
+      tg.ready();
+      console.log("Telegram WebApp initialized:", tg);
+    } else {
+      console.error("Telegram WebApp not available");
     }
-  }, [router]);
+  }, []);
 
   // useEffect(() => {
   //   if (typeof window !== "undefined" && window.Telegram) {

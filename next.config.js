@@ -49,11 +49,12 @@ module.exports = {
   async headers() {
     return [
       {
-        source: "/:path*", // 为所有路径设置头
+        source: "/(.*)",
         headers: [
           {
             key: "Content-Security-Policy",
-            value: "frame-ancestors 'self' https://oauth.telegram.org",
+            value:
+              "default-src 'self'; script-src 'self' https://telegram.org; connect-src 'self' https://api.telegram.org",
           },
         ],
       },
