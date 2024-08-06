@@ -22,7 +22,8 @@ const webhookHandler = async (req, res) => {
 
   if (message && message.message) {
     const chatId = message.message.chat.id;
-    const text = "https://t.me/eden_savvy_game_bot/eden_savvy_game";
+    const url = "https://t.me/eden_savvy_game_bot/eden_savvy_game";
+    const text = `${message.message.text}： ${url}`;
 
     await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: "POST",
