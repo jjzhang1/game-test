@@ -23,7 +23,10 @@ const webhookHandler = async (req, res) => {
   if (message && message.message) {
     const chatId = message.message.chat.id;
     const url = "https://t.me/eden_savvy_game_bot/eden_savvy_game";
-    const text = `${message.message.text}： ${url}`;
+    let text = `${message.message.text}： ${url}`;
+    if (text.indexOf("/start") >= 0) {
+      text = `开始启动游戏： ${url}`;
+    }
 
     await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: "POST",
