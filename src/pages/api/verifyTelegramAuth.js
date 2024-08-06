@@ -25,7 +25,7 @@ export default function handler(req, res) {
 
   const hash = validate(initData, secret);
 
-  console.log("*************", hash, initDataUnsafe.hash);
+  console.log("*************", hash, initDataUnsafe);
 
   // const validateHash = crypto
   //   .createHmac("sha256", key)
