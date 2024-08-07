@@ -26,8 +26,6 @@ export default function Main() {
 
     console.log("开始请求数据", initDataUnsafe);
 
-    console.log("initData数据", initData);
-
     // 将initData发送到您的后端进行验证和处理
     fetch("/api/verifyTelegramAuth", {
       method: "POST",
@@ -52,15 +50,35 @@ export default function Main() {
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.Telegram) {
+    // Ensure the Telegram WebApp script is loaded
+    const script = document.createElement("script");
+    script.src = "https://telegram.org/js/telegram-web-app.js";
+    script.async = true;
+    script.onload = () => {
       const tg = window.Telegram.WebApp;
       tg.ready();
-      console.log("Telegram WebApp 初始化完成:", tg);
-    } else {
-      console.error("Telegram WebApp not available");
-    }
-    // fetchData();
+
+      setTimeout(() => {
+        fetchData();
+      }, 0);
+    };
+
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
+
+  // useEffect(() => {
+  //   if (typeof window !== "undefined" && window.Telegram) {
+  //     const tg = window.Telegram.WebApp;
+  //     tg.ready();
+  //     console.log("Telegram WebApp 初始化完成:", tg);
+  //   } else {
+  //     console.error("Telegram WebApp not available");
+  //   }
+  //   // fetchData();
+  // }, []);
 
   return (
     <>
