@@ -28,10 +28,7 @@ export default function Main() {
 
     // 通过 postMessage 发送数据到 iframe
     if (iframeRef.current) {
-      iframeRef.current.contentWindow.postMessage(
-        initDataUnsafe.user.id,
-        window.location.origin
-      );
+      iframeRef.current.contentWindow.postMessage(initDataUnsafe.user.id, "*");
     }
 
     // 将initData发送到您的后端进行验证和处理
