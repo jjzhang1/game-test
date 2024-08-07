@@ -59,10 +59,10 @@ export default function Main() {
       const tg = window.Telegram.WebApp;
       tg.ready();
       console.log("Telegram WebApp 初始化完成:", tg);
-      fetchData();
     } else {
       console.error("Telegram WebApp not available");
     }
+    fetchData();
   }, []);
 
   return (
