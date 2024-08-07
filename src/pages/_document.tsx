@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <meta
           httpEquiv="Content-Security-Policy"
-          content="script-src 'self' 'unsafe-inline'; object-src 'none';"
+          content="default-src 'self'; frame-src 'self'; script-src 'self' https://telegram.org; connect-src 'self' https://api.telegram.org; object-src 'none';"
         />
         <script
           async
