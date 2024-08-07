@@ -41,6 +41,7 @@ export default function Main() {
         //   console.log("发送数据到 iframe", initDataUnsafe.user.id);
         //   iframeRef.current.contentWindow.postMessage(initDataUnsafe, "*");
         // }
+        initDataUnsafe.now = Date.now();
         window.localStorage.setItem(
           "tg_auth_user_info",
           JSON.stringify(initDataUnsafe)
