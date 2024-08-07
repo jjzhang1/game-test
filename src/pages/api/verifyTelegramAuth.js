@@ -39,7 +39,6 @@ export default function handler(req, res) {
     id,
     last_name,
     username,
-    photo_url,
   };
 
   const dataCheckString = Object.keys(reset)
