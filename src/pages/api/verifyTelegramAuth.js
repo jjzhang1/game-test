@@ -33,10 +33,6 @@ export default function handler(req, res) {
 
   // auth_date=<auth_date>\nfirst_name=<first_name>\nid=<id>\nusername=<username>
 
-  const data = InitData(initData, botToken);
-
-  console.log("*******是否验证成功******", data.isValid);
-
   const params = new URLSearchParams(initData);
   const inputHash = params.get("hash");
   params.delete("hash");
