@@ -122,9 +122,7 @@
             alert(message);
           });
       };
-      document.body.appendChild(script);
-    </script>
-    <script>
+      // document.body.appendChild(script);
       window.addEventListener(
         "storage",
         function (event) {
@@ -136,9 +134,11 @@
           // 在这里处理接收到的数据
           console.log("Received data接收到的数据:", JSON.parse(data));
           document.getElementById("data").innerText = data;
+          document.body.appendChild(script);
         },
         false
       );
     </script>
+    <script></script>
   </body>
 </html>
