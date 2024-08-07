@@ -37,27 +37,23 @@ export default function handler(req, res) {
 
   console.log("*******是否验证成功******", data.isValid);
 
-  const reset = {
-    auth_date,
-    first_name,
-    id,
-    last_name,
-    username,
-  };
+  const params = new URLSearchParams(initData);
+  const inputHash = params.get("hash");
+  params.delete("hash");
 
-  const dataCheckString = Object.keys(reset)
+  const dataCheckString = Array.from(params.keys())
     .sort()
-    .map((key) => `${key}=${reset[key]}`)
+    .map((key) => `${key}=${params.get(key)}`)
     .join("\n");
 
   console.log("+++++++++++++", dataCheckString);
 
-  // 计算密钥
-  const secret = crypto.createHash("sha256").update(botToken).digest();
-
-  // 计算哈希值
+  const secretKey = crypto
+    .createHmac("sha256", "WebAppData")
+    .update(botToken)
+    .digest();
   const hmac = crypto
-    .createHmac("sha256", secret)
+    .createHmac("sha256", secretKey)
     .update(dataCheckString)
     .digest("hex");
 
