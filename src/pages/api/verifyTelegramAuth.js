@@ -1,6 +1,6 @@
 // src/pages/api/verifyTelegramAuth.js
 import crypto from "crypto";
-import { InitData } from "@telegram-apps/init-data-node";
+// import { InitData } from "@telegram-apps/init-data-node";
 
 const botToken = "7033339300:AAEEt_MJUxuU9yMFeoTz6R7GwA27TfmfQWE";
 
