@@ -27,7 +27,7 @@ export default function handler(req, res) {
   // }
 
   const { auth_date, user, hash } = initDataUnsafe;
-  const { first_name, id, last_name, username, photo_url } = user;
+  const { first_name, id, last_name, username, photo_url = "" } = user;
 
   // const initDataUnsafe = initData;
 
