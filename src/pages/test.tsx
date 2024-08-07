@@ -39,10 +39,7 @@ export default function Main() {
         // 通过 postMessage 发送数据到 iframe
         if (iframeRef.current && initDataUnsafe && initDataUnsafe.user) {
           console.log("发送数据到 iframe", initDataUnsafe.user.id);
-          iframeRef.current.contentWindow.postMessage(
-            initDataUnsafe.user.id,
-            "*"
-          );
+          iframeRef.current.contentWindow.postMessage(initDataUnsafe, "*");
         }
         if (data.success) {
           console.log("验证成功");
