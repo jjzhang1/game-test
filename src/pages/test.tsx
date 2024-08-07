@@ -26,6 +26,14 @@ export default function Main() {
 
     console.log("开始请求数据", initDataUnsafe);
 
+    // 通过 postMessage 发送数据到 iframe
+    if (iframeRef.current) {
+      iframeRef.current.contentWindow.postMessage(
+        initDataUnsafe,
+        window.location.origin
+      );
+    }
+
     // 将initData发送到您的后端进行验证和处理
     fetch("/api/verifyTelegramAuth", {
       method: "POST",
@@ -36,7 +44,6 @@ export default function Main() {
     })
       .then((response) => response.json())
       .then((data) => {
-        debugger;
         if (data.success) {
           console.log("验证成功");
         } else {
