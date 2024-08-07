@@ -47,8 +47,8 @@ export default function Main() {
     if (typeof window !== "undefined" && window.Telegram) {
       const tg = window.Telegram.WebApp;
       tg.ready();
-      // fetchData();
-      console.log("Telegram WebApp initialized:", tg);
+      fetchData();
+      console.log("Telegram WebApp 初始化完成:", tg);
     } else {
       console.error("Telegram WebApp not available");
     }

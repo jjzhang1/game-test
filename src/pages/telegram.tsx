@@ -75,11 +75,11 @@ const TelegramPage = () => {
     }
   }, []);
 
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.Telegram) {
-      fetchData();
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== "undefined" && window.Telegram) {
+  //     fetchData();
+  //   }
+  // }, []);
 
   const getFetch = () => {
     alert(window.Telegram);
