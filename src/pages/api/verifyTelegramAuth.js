@@ -27,20 +27,24 @@ export default function handler(req, res) {
   // }
 
   const { auth_date, user, hash } = initDataUnsafe;
-  const { first_name, id, last_name, username } = user;
+  const { first_name, id, last_name, username, photo_url } = user;
 
   // const initDataUnsafe = initData;
 
   // auth_date=<auth_date>\nfirst_name=<first_name>\nid=<id>\nusername=<username>
 
-  const dataCheckString = [
-    `auth_date=${auth_date}`,
-    `first_name=${first_name}`,
-    `last_name=${last_name}`,
-    `id=${id}`,
-    `username=${username}`,
-  ]
+  const reset = {
+    auth_date,
+    first_name,
+    id,
+    last_name,
+    username,
+    photo_url,
+  };
+
+  const dataCheckString = Object.keys(reset)
     .sort()
+    .map((key) => `${key}=${reset[key]}`)
     .join("\n");
 
   console.log("+++++++++++++", dataCheckString);
