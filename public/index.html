@@ -5,7 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://telegram.org; https://config.uca.cloud.unity3d.com; https://cdp.cloud.unity3d.com; style-src 'self' 'unsafe-inline'; object-src 'none';"
+      content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://telegram.org;
+    style-src 'self' 'unsafe-inline';
+    connect-src 'self' https://config.uca.cloud.unity3d.com https://cdp.cloud.unity3d.com https://cdp.cloud.unity.cn https://game-test-drab.vercel.app;
+    object-src 'none';
+  "
     />
     <title>Unity WebGL Player | TestProject</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico" />
