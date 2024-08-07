@@ -28,6 +28,7 @@ export default function Main() {
 
     // 通过 postMessage 发送数据到 iframe
     if (iframeRef.current) {
+      console.log("发送数据到 iframe", initDataUnsafe.user.id);
       iframeRef.current.contentWindow.postMessage(initDataUnsafe.user.id, "*");
     }
 
