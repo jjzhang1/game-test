@@ -27,10 +27,10 @@ export default function Main() {
     console.log("开始请求数据", initDataUnsafe);
 
     // 通过 postMessage 发送数据到 iframe
-    if (iframeRef.current) {
-      console.log("发送数据到 iframe", initDataUnsafe.user.id);
-      iframeRef.current.contentWindow.postMessage(initDataUnsafe.user.id, "*");
-    }
+    // if (iframeRef.current) {
+    //   console.log("发送数据到 iframe", initDataUnsafe.user.id);
+    //   iframeRef.current.contentWindow.postMessage(initDataUnsafe.user.id, "*");
+    // }
 
     // 将initData发送到您的后端进行验证和处理
     fetch("/api/verifyTelegramAuth", {
@@ -67,9 +67,9 @@ export default function Main() {
         <title>Balance</title>
       </Head>
       <div style={{ width: "100%", height: "100vh", margin: 0, padding: 0 }}>
-        <div id="content">
+        {/* <div id="content">
           <button onClick={fetchData}>授权用户信息</button>
-        </div>
+        </div> */}
         <iframe
           src="/index.html"
           ref={iframeRef}
