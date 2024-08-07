@@ -1,6 +1,6 @@
 // src/pages/api/verifyTelegramAuth.js
 import crypto from "crypto";
-import { verifyInitData } from "@telegram-apps/init-data-node";
+import { InitData } from "@telegram-apps/init-data-node";
 
 const botToken = "7033339300:AAEEt_MJUxuU9yMFeoTz6R7GwA27TfmfQWE";
 
@@ -33,9 +33,9 @@ export default function handler(req, res) {
 
   // auth_date=<auth_date>\nfirst_name=<first_name>\nid=<id>\nusername=<username>
 
-  const isValid = verifyInitData(initData, botToken);
+  const data = InitData(initData, botToken);
 
-  console.log("*******是否验证成功******", isValid);
+  console.log("*******是否验证成功******", data.isValid);
 
   const reset = {
     auth_date,
