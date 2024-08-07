@@ -119,20 +119,20 @@
       document.body.appendChild(script);
     </script>
     <script>
-      // window.addEventListener(
-      //   "message",
-      //   function (event) {
-      //     console.log("message请求Event：", event);
-      //     if (event.origin !== window.location.origin) {
-      //       return;
-      //     }
-      //     const data = event.data;
-      //     // 在这里处理接收到的数据
-      //     console.log("Received data接收到的数据:", data);
-      //     document.getElementById("data").innerText = JSON.stringify(data);
-      //   },
-      //   false
-      // );
+      window.addEventListener(
+        "message",
+        function (event) {
+          console.log("message请求Event：", event);
+          if (event.origin !== window.location.origin) {
+            return;
+          }
+          const data = event.data;
+          // 在这里处理接收到的数据
+          console.log("Received data接收到的数据:", data);
+          document.getElementById("data").innerText = JSON.stringify(data);
+        },
+        false
+      );
     </script>
   </body>
 </html>

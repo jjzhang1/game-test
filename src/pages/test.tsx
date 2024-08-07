@@ -27,10 +27,10 @@ export default function Main() {
     console.log("开始请求数据", initDataUnsafe);
 
     // 通过 postMessage 发送数据到 iframe
-    // if (iframeRef.current) {
-    //   console.log("发送数据到 iframe", initDataUnsafe.user.id);
-    //   iframeRef.current.contentWindow.postMessage(initDataUnsafe.user.id, "*");
-    // }
+    if (iframeRef.current && initDataUnsafe && initDataUnsafe.user) {
+      console.log("发送数据到 iframe", initDataUnsafe.user.id);
+      iframeRef.current.contentWindow.postMessage(initDataUnsafe.user.id, "*");
+    }
 
     // 将initData发送到您的后端进行验证和处理
     fetch("/api/verifyTelegramAuth", {
