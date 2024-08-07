@@ -123,13 +123,13 @@
         "storage",
         function (event) {
           console.log("message请求Event：", event);
-          if (event.key === "tg_auth_user_info") {
+          if (event.key !== "tg_auth_user_info") {
             return;
           }
           const data = event.newValue;
           // 在这里处理接收到的数据
-          console.log("Received data接收到的数据:", data);
-          document.getElementById("data").innerText = JSON.stringify(data);
+          console.log("Received data接收到的数据:", JSON.parse(data));
+          document.getElementById("data").innerText = data;
         },
         false
       );
