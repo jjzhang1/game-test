@@ -37,10 +37,14 @@ export default function Main() {
       .then((response) => response.json())
       .then((data) => {
         // 通过 postMessage 发送数据到 iframe
-        if (iframeRef.current && initDataUnsafe && initDataUnsafe.user) {
-          console.log("发送数据到 iframe", initDataUnsafe.user.id);
-          iframeRef.current.contentWindow.postMessage(initDataUnsafe, "*");
-        }
+        // if (iframeRef.current && initDataUnsafe && initDataUnsafe.user) {
+        //   console.log("发送数据到 iframe", initDataUnsafe.user.id);
+        //   iframeRef.current.contentWindow.postMessage(initDataUnsafe, "*");
+        // }
+        window.localStorage.setItem(
+          "tg_auth_user_info",
+          JSON.stringify(initDataUnsafe)
+        );
         if (data.success) {
           console.log("验证成功");
         } else {

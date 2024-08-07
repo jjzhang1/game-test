@@ -54,7 +54,7 @@ module.exports = {
           {
             key: "Content-Security-Policy",
             value:
-              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://telegram.org; style-src 'self' 'unsafe-inline'; object-src 'none';",
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://telegram.org; https://config.uca.cloud.unity3d.com; https://cdp.cloud.unity3d.com; style-src 'self' 'unsafe-inline'; object-src 'none';",
             // value:
             //   "default-src 'self'; frame-src 'self'; script-src 'self' https://telegram.org; connect-src 'self' https://api.telegram.org",
           },
