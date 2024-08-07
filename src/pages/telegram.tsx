@@ -69,18 +69,17 @@ const TelegramPage = () => {
     if (typeof window !== "undefined" && window.Telegram) {
       const tg = window.Telegram.WebApp;
       tg.ready();
-      fetchData();
       console.log("Telegram WebApp 初始化:", tg);
     } else {
       console.error("Telegram WebApp not available");
     }
   }, []);
 
-  // useEffect(() => {
-  //   if (typeof window !== "undefined" && window.Telegram) {
-  //     fetchData();
-  //   }
-  // }, [router]);
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.Telegram) {
+      fetchData();
+    }
+  }, []);
 
   const getFetch = () => {
     alert(window.Telegram);
