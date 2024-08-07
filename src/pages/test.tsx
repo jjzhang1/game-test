@@ -69,17 +69,6 @@ export default function Main() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   if (typeof window !== "undefined" && window.Telegram) {
-  //     const tg = window.Telegram.WebApp;
-  //     tg.ready();
-  //     console.log("Telegram WebApp 初始化完成:", tg);
-  //   } else {
-  //     console.error("Telegram WebApp not available");
-  //   }
-  //   // fetchData();
-  // }, []);
-
   return (
     <>
       <Head>
