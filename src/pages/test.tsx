@@ -75,9 +75,6 @@ export default function Main() {
         <title>Balance</title>
       </Head>
       <div style={{ width: "100%", height: "100vh", margin: 0, padding: 0 }}>
-        {/* <div id="content">
-          <button onClick={fetchData}>授权用户信息</button>
-        </div> */}
         <iframe
           src="/index.html"
           ref={iframeRef}
