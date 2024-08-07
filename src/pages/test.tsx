@@ -34,16 +34,16 @@ export default function Main() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ initData, initDataUnsafe }),
+      body: JSON.stringify({ initData }),
     })
       .then((response) => response.json())
       .then((data) => {
-        initDataUnsafe.now = Date.now();
-        window.localStorage.setItem(
-          "tg_auth_user_info",
-          JSON.stringify(initDataUnsafe)
-        );
         if (data.success) {
+          initDataUnsafe.now = Date.now();
+          window.localStorage.setItem(
+            "tg_auth_user_info",
+            JSON.stringify(initDataUnsafe)
+          );
           console.log("验证成功");
         } else {
           console.log("验证失败");
@@ -59,7 +59,7 @@ export default function Main() {
     } else {
       console.error("Telegram WebApp not available");
     }
-    fetchData();
+    // fetchData();
   }, []);
 
   return (
