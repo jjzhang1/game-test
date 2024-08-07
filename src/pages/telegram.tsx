@@ -69,7 +69,8 @@ const TelegramPage = () => {
     if (typeof window !== "undefined" && window.Telegram) {
       const tg = window.Telegram.WebApp;
       tg.ready();
-      console.log("Telegram WebApp initialized:", tg);
+      fetchData();
+      console.log("Telegram WebApp 初始化:", tg);
     } else {
       console.error("Telegram WebApp not available");
     }
