@@ -24,6 +24,8 @@ export default function Main() {
       hash: initDataUnsafe.hash,
     });
 
+    console.log("开始请求数据", initDataUnsafe);
+
     // 将initData发送到您的后端进行验证和处理
     fetch("/api/verifyTelegramAuth", {
       method: "POST",
@@ -47,8 +49,8 @@ export default function Main() {
     if (typeof window !== "undefined" && window.Telegram) {
       const tg = window.Telegram.WebApp;
       tg.ready();
-      fetchData();
       console.log("Telegram WebApp 初始化完成:", tg);
+      fetchData();
     } else {
       console.error("Telegram WebApp not available");
     }
