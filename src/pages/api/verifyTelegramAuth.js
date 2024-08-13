@@ -11,6 +11,8 @@ export default function handler(req, res) {
 
   const { initData } = req.body;
 
+  console.log("********", initData);
+
   const params = new URLSearchParams(initData);
   const hash = params.get("hash");
   params.delete("hash");
