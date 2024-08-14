@@ -36,6 +36,7 @@ export default function Main() {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log("请求成功1111111111", data);
         if (data.success) {
           initDataUnsafe.now = Date.now();
           window.localStorage.setItem(
