@@ -36,12 +36,12 @@ export default function Main() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("请求成功1111111111", data);
-        if (data.success) {
+        if (data?.code === 0) {
           initDataUnsafe.now = Date.now();
+          const token = data?.data?.token;
           window.localStorage.setItem(
             "tg_auth_user_info",
-            JSON.stringify(initDataUnsafe)
+            JSON.stringify({ token, ...initDataUnsafe })
           );
           console.log("验证成功");
         } else {
