@@ -32,7 +32,7 @@ export default function Main() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ initData }),
+      body: JSON.stringify({ init_data: initData }),
     })
       .then((response) => response.json())
       .then((data) => {

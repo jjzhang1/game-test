@@ -37,8 +37,11 @@ module.exports = {
   async rewrites() {
     const env = process.env.NODE_ENV;
     const testUrl = "http://52.77.241.219:8443";
-    const prodUrl = "http://balance.game:8888";
+    // const prodUrl = "http://balance.game:8888";
+    const prodUrl = "http://52.77.241.219:8443";
+
     const destination = env === "production" ? prodUrl : testUrl;
+    console.log("portttttttttttttt", destination);
     return [
       {
         source: "/api/:path*",
