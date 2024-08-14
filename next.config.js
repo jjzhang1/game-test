@@ -36,7 +36,7 @@ module.exports = {
   },
   async rewrites() {
     const env = process.env.NODE_ENV;
-    const testUrl = "http://44.214.134.96:8888";
+    const testUrl = "http://52.77.241.219:8443";
     const prodUrl = "http://balance.game:8888";
     const destination = env === "production" ? prodUrl : testUrl;
     return [
@@ -62,8 +62,6 @@ module.exports = {
           `
               .replace(/\s{2,}/g, " ")
               .trim(),
-            // value:
-            //   "default-src 'self'; frame-src 'self'; script-src 'self' https://telegram.org; connect-src 'self' https://api.telegram.org",
           },
         ],
       },

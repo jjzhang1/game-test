@@ -27,7 +27,7 @@ export default function Main() {
     console.log("开始请求数据", initDataUnsafe);
 
     // 将initData发送到您的后端进行验证和处理
-    fetch("/api/verifyTelegramAuth", {
+    fetch("/api/get_token", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
