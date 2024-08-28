@@ -49,25 +49,25 @@ module.exports = {
       },
     ];
   },
-  async headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: [
-          {
-            key: "Content-Security-Policy",
-            value: `
-            default-src 'self';
-            script-src 'self' 'unsafe-inline' 'unsafe-eval' https://telegram.org;
-            style-src 'self' 'unsafe-inline';
-            connect-src 'self' https://config.uca.cloud.unity3d.com https://cdp.cloud.unity3d.com https://cdp.cloud.unity.cn https://game-test-drab.vercel.app;
-            object-src 'none';
-          `
-              .replace(/\s{2,}/g, " ")
-              .trim(),
-          },
-        ],
-      },
-    ];
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: "/(.*)",
+  //       headers: [
+  //         {
+  //           key: "Content-Security-Policy",
+  //           value: `
+  //           default-src 'self';
+  //           script-src 'self' 'unsafe-inline' 'unsafe-eval' https://telegram.org;
+  //           style-src 'self' 'unsafe-inline';
+  //           connect-src 'self' https://config.uca.cloud.unity3d.com https://cdp.cloud.unity3d.com https://cdp.cloud.unity.cn https://game-test-drab.vercel.app;
+  //           object-src 'none';
+  //         `
+  //             .replace(/\s{2,}/g, " ")
+  //             .trim(),
+  //         },
+  //       ],
+  //     },
+  //   ];
+  // },
 };
